@@ -5,10 +5,10 @@ var repeat = true;
 var arrayName = [];
 var arrayPassword = [];
 
-
 while (repeat) {
     ChooseOptions();
 }
+
 
 function NameAndPassword() {
     var name = prompt("Nome:");
@@ -25,10 +25,11 @@ function ChooseOptions() {
         NameAndPassword();
     } else if (choice == 2) {
         login = prompt("Login/Nome:")
-        password = prompt("Senha::")
+        password = prompt("Senha:")
         Login(login, password);
 
     } else if (choice == 3) {
+        login = prompt("Digite o Nome de Usuario que deseja Excluir o Cadastro")
         DeleteRegistration(login);
     } else if (choice == 4) {
         repeat = false;
