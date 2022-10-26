@@ -17,6 +17,7 @@ function NameAndPassword() {
     arrayPassword[indexPassword] = password;
     indexName++;
     indexPassword++;
+    console.log("Novo Usuario Cadastrado!");
 };
 
 function ChooseOptions() {
@@ -41,14 +42,18 @@ function Login(login, password) {
     for (var i = 0; i < arrayName.length; i++) {
         if (login == arrayName[i] && password == arrayPassword[i]) {
             loginValidation = true;
-            console.log("Login Efetuado com Sucesso!")
+            i = arrayName.length;
         } else {
             loginValidation = false
-            console.log("Nome ou Senha Incorretos!")
         };
 
     };
-    return loginValidation;
+    if (loginValidation) {
+        console.log("Login Efetuado com Sucesso!")
+    } else {
+        console.log("Nome ou Senha Incorretos!")
+    }
+
 }
 
 function DeleteRegistration(login) {
@@ -70,6 +75,7 @@ function DeleteRegistration(login) {
     }
     arrayName = arrSupName;
     arrayPassword = arrSupPassword;
+    console.log("Cadastro Deletado com Sucesso!")
 
     return arrayName, arrayPassword;
 
