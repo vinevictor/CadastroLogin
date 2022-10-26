@@ -1,11 +1,14 @@
 // Cadastro e Login de Usuario
 var indexName = 0, indexPassword = 0;
 var login, password;
-var close = true;
+var repeat = true;
 var arrayName = [];
 var arrayPassword = [];
 
-ChooseOptions();
+
+while (repeat) {
+    ChooseOptions();
+}
 
 function NameAndPassword() {
     var name = prompt("Nome:");
@@ -21,13 +24,14 @@ function ChooseOptions() {
     if (choice == 1) {
         NameAndPassword();
     } else if (choice == 2) {
-        Login();
         login = prompt("Login/Nome:")
         password = prompt("Senha::")
+        Login(login, password);
+
     } else if (choice == 3) {
-        DeleteRegistration();
+        DeleteRegistration(login);
     } else if (choice == 4) {
-        close = false;
+        repeat = false;
     }
 };
 
@@ -36,10 +40,36 @@ function Login(login, password) {
     for (var i = 0; i < arrayName.length; i++) {
         if (login == arrayName[i] && password == arrayPassword[i]) {
             loginValidation = true;
+            console.log("Login Efetuado com Sucesso!")
         } else {
             loginValidation = false
+            console.log("Nome ou Senha Incorretos!")
         };
 
     };
     return loginValidation;
+}
+
+function DeleteRegistration(login) {
+    var arrSupName = [];
+    var arrSupPassword = [];
+    var contNameAndPassword = 0
+    for (var i = 0; i < arrayName.length; i++) {
+        if (login == arrayName[i]) {
+            arrSupName[contNameAndPassword] = arrayName[i + 1];
+            arrSupPassword[contNameAndPassword] = arrayPassword[i + 1];
+            contNameAndPassword++;
+            i++;
+        } else {
+            arrSupName[contNameAndPassword] = arrayName[i];
+            arrSupPassword[contNameAndPassword] = arrayPassword[i];
+            contNameAndPassword++;
+        }
+
+    }
+    arrayName = arrSupName;
+    arrayPassword = arrSupPassword;
+
+    return arrayName, arrayPassword;
+
 }
